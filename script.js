@@ -42,11 +42,15 @@ function switchDone(name) {
 }
 
 // reload todo list
-function reloadTodos() {
+function reloadTodos(localtodo = null) {
+    if (localtodo === null) {
+        localtodo = todos;
+    }
+
     const todoContainer = document.getElementById('todo');
     todoContainer.innerHTML = ''; // Clear existing todos
 
-    todos.forEach(todo => {
+    localtodo.forEach(todo => {
         // container untuk setiap todo item
         let todoList = document.createElement('div');
         todoList.id = 'todo-list';
@@ -133,3 +137,26 @@ form.addEventListener('submit', function (event) {
     alert('Tugas ditambahkan!');
 });
 
+const filter = document.getElementById('filter').querySelector('input[name="filter"]');
+filter.addEventListener('input', function () {
+    // copy todos
+    let tempTodos = [...todos];
+    let filterValue = filter.value
+    console.log('Filter value:', filterValue); // Debugging line
+
+    // filter
+    if (filterValue === 'done') {
+        tempTodos = tempTodos.filter(todo => todo.done);
+    } else if (filterValue === 'not done') {
+        tempTodos = tempTodos.filter(todo => !todo.done);
+    } else if (filterValue === '') {
+        // nothing
+    } else {
+        tempTodos = tempTodos.filter(todo => {
+            return todo.name.toLowerCase().includes(filterValue) ||
+                todo.description.toLowerCase().includes(filterValue);
+        });
+    }
+
+    reloadTodos(tempTodos);
+});
