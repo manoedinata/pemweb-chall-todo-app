@@ -137,30 +137,26 @@ form.addEventListener("submit", function (event) {
   alert("Tugas ditambahkan!");
 });
 
-const filter = document
-  .getElementById("filter")
-  .querySelector('input[name="filter"]');
-filter.addEventListener("input", function () {
-  // copy todos
-  let tempTodos = [...todos];
-  let filterValue = filter.value;
-  console.log("Filter value:", filterValue); // Debugging line
+const filterRadios = document
+  .getElementById("filter-radio")
+  .querySelectorAll('input[name="filter"]');
 
-  // filter
-  if (filterValue === "done") {
-    tempTodos = tempTodos.filter((todo) => todo.done);
-  } else if (filterValue === "not done") {
-    tempTodos = tempTodos.filter((todo) => !todo.done);
-  } else if (filterValue === "") {
-    // nothing
-  } else {
-    tempTodos = tempTodos.filter((todo) => {
-      return (
-        todo.name.toLowerCase().includes(filterValue) ||
-        todo.description.toLowerCase().includes(filterValue)
-      );
-    });
-  }
+filterRadios.forEach((radio) => {
+  radio.addEventListener("change", function () {
+    // copy todos
+    let tempTodos = [...todos];
+    let filterValue = radio.value;
+    console.log("Filter value:", filterValue); // Debugging line
 
-  reloadTodos(tempTodos);
+    // filter
+    if (filterValue === "done") {
+      tempTodos = tempTodos.filter((todo) => todo.done == true);
+    } else if (filterValue === "not-done") {
+      tempTodos = tempTodos.filter((todo) => todo.done == false);
+    } else {
+      // ga ngapa-ngapain
+    }
+
+    reloadTodos(tempTodos);
+  });
 });
