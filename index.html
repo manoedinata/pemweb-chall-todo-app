@@ -1,47 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do Gw</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do Gw</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <h1>To-Do Gw</h1>
-    <form id="todo-form">
-        <input type="text" id="todo-input" placeholder="Add a new task" required>
-        <input type="text" id="todo-description" placeholder="Add a description" required>
-        <button type="submit">Tambah</button>
-    </form>
-    <hr>
+  <h1>To-Do Gw</h1>
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="Add a new task" required />
+    <input type="text" id="todo-description" placeholder="Add a description" required />
+    <button type="submit">Tambah</button>
+  </form>
+  <hr />
 
-    <div id="filter-radio">
-        <label>
-            <input type="radio" name="filter" value="all" checked> All
-        </label>
-        <label>
-            <input type="radio" name="filter" value="done"> Done
-        </label>
-        <label>
-            <input type="radio" name="filter" value="not-done"> Not Done
-        </label>
-    </div>
+  <div id="filter-radio">
+    <label>
+      <input type="radio" name="filter" value="all" checked /> All
+    </label>
+    <label> <input type="radio" name="filter" value="done" /> Done </label>
+    <label>
+      <input type="radio" name="filter" value="not-done" /> Not Done
+    </label>
+  </div>
 
-    <div id="todo">
-        <!--
+  <div id="todo">
+    <!--
         <div id="todo-list">
             <h3>Tugas 1</h3>
             <p>Deskripsi tugas 1</p>
             <button class="delete-btn">Delete</button>
         </div>
         -->
-    </div>
+  </div>
 
-    <footer>
-        <script src="script.js"></script>
-    </footer>
-
+  <footer>
+    <script src="script.js"></script>
+  </footer>
 </body>
 
 </html>
